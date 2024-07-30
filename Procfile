@@ -1,1 +1,1 @@
-gunicorn CCP.wsgi
+web: gunicorn CCP.wsgi
