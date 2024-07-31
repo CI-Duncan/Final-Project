@@ -1,20 +1,29 @@
+{% extends "base.html" %}
+
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-    <title>Django-Setup</title>
-    <link rel="stylesheet" href="{% static 'css/style.css'%}">
-</head>
+{% block title %}Client Care Plan{% endblock title %}
 <body>
+    {% block content %}
     <h1>Currently running  {{ mode }} mode!</h1>
 
-    <p>Displaying {{ month |capfirst }} of {{ year }}</p>
-    <p>This is the {{ month_num }} month of {{ year }}</p>
+    <p>Care plan as of {{ today }} at {{ time }}</p>
 
-    <script src="{% static 'js/script.js'%}"></script>
+    <div id="cal-cont">
+        <div class="calendar">{{ cal |safe}} </div>
+    </div>
+
+
+
+    <p>Displaying {{ month |capfirst }} of {{ year }}</p>
+    <p>This is month {{ month_num }} of {{ year }}</p>
+
+    
+    <div class="col-md-12">
+        Full Calendar
+    </div>
+    {% endblock content %}
+
+
 </body>
 </html>
