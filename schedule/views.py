@@ -40,5 +40,6 @@ from time import gmtime, strftime
 
 class Diary(generic.ListView):
     model = Schedule
+    queryset = Schedule.objects.filter()
     template_name = 'diary.html'
     context_object_name = 'schedules'

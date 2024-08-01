@@ -19,5 +19,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('schedule.urls')),  # Includes URLs from the schedule app
+    path('summernote/', include('django_summernote.urls')),
+    path('', include('schedule.urls')),  
 ]
