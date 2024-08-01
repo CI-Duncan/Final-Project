@@ -2,21 +2,9 @@
 
 {% load static %}
 
-{% block title %}Client Care Plan{% endblock title %}
+{% block title %}Client Care Plan{% endblock %}
 <body>
     {% block content %}
-    <h1>Currently running  {{ mode }} mode!</h1>
-
-    <p>Care plan as of {{ today }} at {{ time }}</p>
-
-    <div id="cal-cont">
-        <div class="calendar">{{ cal |safe}} </div>
-    </div>
-
-
-
-    <p>Displaying {{ month |capfirst }} of {{ year }}</p>
-    <p>This is month {{ month_num }} of {{ year }}</p>
 
     
     <div class="col-md-12">
