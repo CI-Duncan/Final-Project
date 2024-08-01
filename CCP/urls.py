@@ -16,11 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from schedule import views
-
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('schedule.urls'), name='home'),
-    path('', views.diary, name="diary")
+    path('', include('schedule.urls')),  # Includes URLs from the schedule app
 ]

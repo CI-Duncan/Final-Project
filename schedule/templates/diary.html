@@ -1,17 +1,12 @@
 {% extends "base.html" %}
 
-{% load static %}
-
 {% block title %}Client Care Plan{% endblock %}
-<body>
-    {% block content %}
 
-    
-    <div class="col-md-12">
-        Full Calendar
-    </div>
-    {% endblock content %}
-
-
-</body>
-</html>
+{% block content %}
+<h1>Appointments</h1>
+{% for schedule in schedules %}
+    <h2>{{ schedule.start }}</h2>
+    <h2>{{ schedule.end }}</h2>
+    <p>Client: {{ schedule.client }}</p>
+{% endfor %}
+{% endblock %}

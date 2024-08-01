@@ -1,6 +1,6 @@
-from django.urls import path, include
-from schedule import views
+from django.urls import path
+from . import views
 
 urlpatterns = [
-    path('<int:year>/<str:month>/', views.diary, name='diary'),
+    path('', views.Diary.as_view(), name='diary'),  # Ensure the view name is correct
 ]

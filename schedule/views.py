@@ -1,11 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.views.generic import TemplateView
+from django.views import generic
+from .models import Schedule
 import calendar
 from calendar import HTMLCalendar
 import datetime
 from time import gmtime, strftime
-from schedule.models import Schedule
+
 
 #Create your views here.
 # def diary(request, year, month,):
@@ -37,5 +38,7 @@ from schedule.models import Schedule
 #                     "cal": cal,
 #                     })
 
-def diary(request):
-    return render (request, 'diary.html')
+class Diary(generic.ListView):
+    model = Schedule
+    template_name = 'diary.html'
+    context_object_name = 'schedules'
