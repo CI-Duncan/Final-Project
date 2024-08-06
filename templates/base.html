@@ -13,8 +13,45 @@
         <script src="https://kit.fontawesome.com/8012f70b9a.js" crossorigin="anonymous"></script>
     </head>
     <body>
-        <nav>
-
+        <nav class="navbar navbar-light navbar-expand-sm">
+            <div class="container-fluid">
+                <a href="home.html" class="navbar-brand">
+                    Complete Care Portal
+                </a>
+                <button class="navbar-toggler ml-auto" type="button" data-bs-toggle="collapse" data-bs-target="#menuItems" aria-controls="menuItems" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="menuItems">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="active nav-item mr-2">
+                            <a href="home.html" class="nav-link">Home<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item mr-2">
+                            <a href="about.html" class="nav-link">About</a>
+                        </li>
+                        <li class="nav-item mr-2">
+                            <a href="contact.html" class="nav-link">Contact</a>
+                        </li>
+                        <!-- <li class="nav-item mr-2">
+                            <a href="newsletter.html" class="nav-link">Newsletter</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Blogs
+                            </a>
+                            <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="blog.html">Latest Blog</a></li>
+                            <li><a class="dropdown-item" href="blog-nav.html">All Blogs</a></li>                            
+                            </ul>
+                        </li> -->
+                        <!-- <li class="nav-item">
+                            <a class="nav-link disabled" href="#">Disabled</a>
+                        </li> -->
+                        <!-- <li class="nav-item mr-2 d-block d-sm-none"><a class="nav-link" href="#">Sign In / Sign Up</a>
+                        </li> -->
+                    </ul>
+                </div>
+            </div>
         </nav>
 
         <h1>Hello Django From Heroku</h1>

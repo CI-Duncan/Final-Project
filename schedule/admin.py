@@ -14,3 +14,11 @@ class ScheduleAdmin(SummernoteModelAdmin):
 
 # Register your models here.
 admin.site.register(ClientEventNote)
+
+# @admin.register(ClientEventNote)
+# class ClientEventNoteAdmin(SummernoteModelAdmin):
+
+#     list_display = ('client', 'slug')
+#     search_fields = ['client',]
+#     prepopulated_fields = {'slug': ('client', 'start')}
+#     summernote_fields = ('carer',)

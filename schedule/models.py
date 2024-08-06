@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.text import slugify
 
 STATUS = (
     (0, "Scheduled"),
@@ -8,7 +9,7 @@ STATUS = (
 
 class Schedule(models.Model):
     cal_id = models.AutoField(primary_key=True)
-    slug = models.SlugField(max_length=200, unique=True, null=True, blank=True)
+    slug = models.SlugField(max_length=200, unique=True,)
     client = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="schedules"
     )
@@ -36,6 +37,19 @@ class ClientEventNote(models.Model):
     )
     notes = models.TextField()
     note_created = models.DateTimeField(auto_now_add=True)
+    slug = models.SlugField(max_length=255, blank=True, null=True)
+
+    def generate_slug_from_date_time(self):
+        # Convert the DateTimeField to a string in YYYYMMDD_HHMM format
+        formatted_datetime = self.start.strftime('%Y%m%d_%H%M')
+        # Convert the string to a slug
+        return slugify(formatted_datetime)
+
+    def save(self, *args, **kwargs):
+        # Generate the slug if it hasn't been set explicitly
+        if not self.slug:
+            self.slug = self.generate_slug_from_date_time()
+        super().save(*args, **kwargs)  # Call the "real" save() method
 
     def __str__(self):
         date = self.cal_id.start.date()

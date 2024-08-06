@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Client Care Plan{% endblock %}
+
+{% block content %}
+
+<!-- contact.html content starts here -->
+<div>
+    <form action="/contact-form/" method="post">
+        <label for="contact_form">Your first name: </label>
+        <input id="f_name" type="text" name="f_name" value="{{ current_name }}">
+        <input type="submit" value="OK">
+        <label for="contact_form">Your last name: </label>
+        <input id="l_name" type="text" name="l_name" value="{{ current_name }}">
+        <input type="submit" value="OK">
+        <label for="contact_form">Your email address: </label>
+        <input id="email" type="email" name="email" value="{{ current_name }}">
+        <input type="submit" value="OK">
+        <label for="contact_form">Your contact number: </label>
+        <input id="contact_number" type="number" name="contact_number" value="{{ current_name }}">
+        <input type="submit" value="OK">
+    </form>
+
+
+
+</div>
+<!-- contact.html content ends here -->
+{% endblock %}
