@@ -29,7 +29,7 @@ class Schedule(models.Model):
     client = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="schedules"
     )
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=140)
 
     def __str__(self):
         return self.name
@@ -69,14 +69,14 @@ class ClientEventNote(models.Model):
     client = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="client_event_notes"
     )
-    title = models.CharField(max_length=255)
-    carer = models.TextField(null=True, blank=True)
+    title = models.CharField(max_length=140)
+    carer = models.CharField(null=True, blank=True, max_length=100)
     notes = models.TextField(blank=True)
     status = models.IntegerField(choices=STATUS, default=0)
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()
     created_on = models.DateTimeField(auto_now_add=True)
-    slug = models.SlugField(max_length=255, unique=True, blank=True)
+    slug = models.SlugField(max_length=140, unique=True, blank=True)
 
     def save(self, *args, **kwargs):
         if not self.slug:

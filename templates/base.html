@@ -1,6 +1,11 @@
 {% load static %}
 
 {% url 'home' as home_url %}
+<!-- {% url 'about' as about_url %} -->
+{% url 'account_login' as login_url %}
+{% url 'account_signup' as signup_url %}
+{% url 'account_logout' as logout_url %}
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,43 +18,40 @@
         <script src="https://kit.fontawesome.com/8012f70b9a.js" crossorigin="anonymous"></script>
     </head>
     <body>
-        <nav class="navbar navbar-light navbar-expand-sm">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white">
             <div class="container-fluid">
-                <a href="home.html" class="navbar-brand">
-                    Complete Care Portal
-                </a>
-                <button class="navbar-toggler ml-auto" type="button" data-bs-toggle="collapse" data-bs-target="#menuItems" aria-controls="menuItems" aria-expanded="false" aria-label="Toggle navigation">
+                <a class="navbar-brand" href="{% url 'home' %}"><span class="brand">c<span class="red-o">o</span>de<span
+                            class="thin">|star</span></span></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                    aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="menuItems">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="active nav-item mr-2">
-                            <a href="home.html" class="nav-link">Home<span class="sr-only">(current)</span></a>
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                          <a class="nav-link {% if request.path == home_url %}active" aria-current="{% endif %}" href="{% url 'home' %}">Home</a>
                         </li>
-                        <li class="nav-item mr-2">
-                            <a href="about.html" class="nav-link">About</a>
-                        </li>
-                        <li class="nav-item mr-2">
-                            <a href="contact.html" class="nav-link">Contact</a>
-                        </li>
-                        <!-- <li class="nav-item mr-2">
-                            <a href="newsletter.html" class="nav-link">Newsletter</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Blogs
-                            </a>
-                            <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="blog.html">Latest Blog</a></li>
-                            <li><a class="dropdown-item" href="blog-nav.html">All Blogs</a></li>                            
-                            </ul>
-                        </li> -->
                         <!-- <li class="nav-item">
-                            <a class="nav-link disabled" href="#">Disabled</a>
+                          <a class="nav-link {% if request.path == about_url %}active" aria-current="{% endif %}" href="{% url 'about' %}">About</a>
                         </li> -->
-                        <!-- <li class="nav-item mr-2 d-block d-sm-none"><a class="nav-link" href="#">Sign In / Sign Up</a>
-                        </li> -->
-                    </ul>
+                        {% if user.is_authenticated %}
+                            <li class="nav-item">
+                                <a class="nav-link {% if request.path == logout_url %}active" aria-current="{% endif %}" href="{% url 'account_logout' %}">Logout</a>
+                            </li>
+                            {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link {% if request.path == signup_url %}active" aria-current="{% endif %}"
+                                    href="{% url 'account_signup' %}">Register</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {% if request.path == login_url %}active" aria-current="{% endif %}" href="{% url 'account_login' %}">Login</a>
+                            </li>
+                        {% endif %}
+                      </ul>
+    
+                    <span class="navbar-text text-muted">
+                        adventures of a software developer
+                    </span>
                 </div>
             </div>
         </nav>
